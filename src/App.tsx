@@ -1,25 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, ThemeProvider } from "@mui/material";
+import { RouterProvider } from "react-router-dom";
+
+import { router } from "./app-router";
+import { theme } from "./theme";
+
+import appImage from "./appBg.png";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          display: "flex",
+          backgroundImage: `url(${appImage})`,
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* <img
+        src={appImage}
+        style={{ position: "absolute", width: "100vw", height: "100vh" }}
+        alt="background"
+        draggable={false}
+      /> */}
+        <Box
+          sx={{
+            flex: 1,
+            // position: "absolute",
+            backgroundColor: "rgba(49,49,73,0.9)",
+            height: "100vh",
+            // width: "100vw",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <RouterProvider router={router} />
+        </Box>
+      </Box>
+    </ThemeProvider>
   );
 }
 
